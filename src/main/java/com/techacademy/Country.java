@@ -13,11 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="country")
-public class Country{
-	@Id
-	private String code;
-	private String name;
-	private int population;
+public class Country {
+    @Id
+    private String code;
+    private String name;
+    private int population;
 }
-
-
