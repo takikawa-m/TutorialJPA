@@ -22,7 +22,7 @@ public class CountryController {
     public String getList(Model model) {
         // 全件検索結果をModelに登録
         model.addAttribute("countrylist", service.getCountryList());
-        // kadai
+        // 課題
         model.addAttribute("data.code");
         // country/list.htmlに画面遷移
         return "country/list";
@@ -52,17 +52,19 @@ public class CountryController {
     }
 
     // ----- 削除画面 -----
-    @GetMapping("/delete")
-    public String deleteCountryForm(Model model) {
+    @GetMapping(value = { "/delete", "/delete/{code}/" })
+    public String deleteCountryForm(@PathVariable("code") String code, Model model) {
         // country/delete.htmlに画面遷移
         return "country/delete";
     }
 
     // ----- 削除 -----
     @PostMapping(value = { "/delete", "/delete/{code}" })
-    public String deleteCountry(@RequestParam("code") String code, Model model) {
+    public String deleteCountry(@PathVariable String code, Model model) {
         // 削除
         service.deleteCountry(code);
+        // 課題
+        model.addAttribute("code", code);
 
         // 一覧画面にリダイレクト
         return "redirect:/country/list/" + code;

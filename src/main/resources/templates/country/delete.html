@@ -10,8 +10,7 @@
 
         <table>
         	<tr>
-        		<td><form method="post" action="/country/delete">
-        <input type="text" name="code" th:value="${code}"></td>
+        		<td><form th:action="@{/country/delete/{code}(code=${code})}" method="post"><input type="text" name="code" th:value="${code}"></td>
                 <td><button type="submit">送信</button></form></td>
         		<td><a th:href="@{/country/list/}">一覧に戻る</a></td>
        		</tr>
